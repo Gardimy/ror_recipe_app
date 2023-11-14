@@ -21,7 +21,7 @@ class RecipeFoodsController < ApplicationController
     @recipe = @recipe_food.recipe
 
     if @recipe_food
-      # The record was found, proceed with rendering the edit view
+      # The record was found
     else
       flash[:alert] = 'Recipe food not found'
       redirect_to recipe_path(@recipe.id)

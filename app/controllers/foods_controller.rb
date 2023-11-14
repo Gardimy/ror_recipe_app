@@ -31,9 +31,7 @@ class FoodsController < ApplicationController
     @recipes.each do |recipe|
       recipe.recipe_foods.each do |recipe_food|
         general_food = @general_food_list.find_by(id: recipe_food.food_id)
-
         next unless general_food.nil? || general_food.quantity < recipe_food.quantity
-
         quantity_needed = recipe_food.quantity - general_food.quantity
         price = recipe_food.food.price * quantity_needed
 
