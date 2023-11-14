@@ -1,12 +1,11 @@
 class RecipeFoodsController < ApplicationController
-  before_action :set_recipe_food, only: [:show, :edit, :update, :destroy]
+  before_action :set_recipe_food, only: %i[show edit update destroy]
 
   def index
     @recipe_foods = RecipeFood.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @recipe_food = RecipeFood.new
@@ -21,8 +20,7 @@ class RecipeFoodsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @recipe_food.update(recipe_food_params)
