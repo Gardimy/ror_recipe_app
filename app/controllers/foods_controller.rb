@@ -39,8 +39,8 @@ class FoodsController < ApplicationController
 
         @missing_food_items << {
           food_name: recipe_food.food.name,
-          quantity_needed:,
-          price:
+          quantity_needed: quantity_needed,
+          price: price
         }
       end
     end
