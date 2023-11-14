@@ -69,6 +69,10 @@ GEM
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
     bcrypt (3.1.19)
+    better_errors (2.10.1)
+      erubi (>= 1.0.0)
+      rack (>= 0.9.0)
+      rouge (>= 1.0.0)
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
@@ -94,6 +98,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.12.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -191,6 +199,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.6)
+    rouge (4.2.0)
     rubyzip (2.3.2)
     selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -240,10 +249,12 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  better_errors (~> 2.10, >= 2.10.1)
   bootsnap
   capybara
   debug
   devise
+  dotenv-rails
   importmap-rails
   jbuilder
   letter_opener
