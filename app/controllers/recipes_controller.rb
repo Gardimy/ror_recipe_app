@@ -7,13 +7,6 @@ class RecipesController < ApplicationController
     @public_recipes = Recipe.where(public: true).order(created_at: :desc)
   end
 
-  def show
-    @recipe = Recipe.includes(recipe_foods: :food).find(params[:id])
-    @recipe_foods = @recipe.recipe_foods
-    @user = current_user
-    @food = Food.new if current_user == @recipe.user
-  end
-
   def new
     @recipe = Recipe.new
   end
@@ -29,6 +22,13 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
+  end
+
+  def show
+    @recipe = Recipe.includes(recipe_foods: :food).find(params[:id])
+    @recipe_foods = @recipe.recipe_foods
+    @user = current_user
+    @food = Food.new if current_user == @recipe.user
   end
 
   def destroy
@@ -54,7 +54,7 @@ class RecipesController < ApplicationController
                          'Recipe is now private.'
                        end
     else
-      notice_message = 'You are not authorized to update this recipe.'
+      notice_message = 'You are not authorized to manage this recipe.'
     end
 
     redirect_to recipe_path(@recipe), notice: notice_message
@@ -64,6 +64,16 @@ class RecipesController < ApplicationController
 
   def set_recipe
     @recipe = Recipe.find(params[:id])
+  end
+
+  def add_ingredient
+    @recipe = Recipe.find(params[:id])
+    @food = Food.new
+  end
+
+  def public_recipes
+    @public_recipes = Recipe.where(public: true).order(created_at: :desc)
+    render 'public_index'
   end
 
   def recipe_params
@@ -77,15 +87,5 @@ class RecipesController < ApplicationController
   def shopping_list
     @recipe = Recipe.find(params[:id])
     @recipe_foods = @recipe.recipe_foods
-  end
-
-  def add_ingredient
-    @recipe = Recipe.find(params[:id])
-    @food = Food.new
-  end
-
-  def public_recipes
-    @public_recipes = Recipe.where(public: true).order(created_at: :desc)
-    render 'public_index'
   end
 end

@@ -18,6 +18,4 @@ Rails.application.routes.draw do
   get 'general_shopping_list', to: 'foods#general_shopping_list', as: 'general_shopping_list'
 
   resources :public_recipes, only: [:index]
-
-  # Other routes as needed
 end
