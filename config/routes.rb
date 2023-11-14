@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
   resources :foods
-  # other routes...
+  resources :recipe_foods
 end
