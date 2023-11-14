@@ -1,47 +1,69 @@
 class RecipeFoodsController < ApplicationController
-  before_action :set_recipe_food, only: %i[show edit update destroy]
-
-  def index
-    @recipe_foods = RecipeFood.all
-  end
-
-  def show; end
-
+  before_action :set_food_recipe, except: %i[edit destroy]
   def new
     @recipe_food = RecipeFood.new
   end
 
   def create
     @recipe_food = RecipeFood.new(recipe_food_params)
+
     if @recipe_food.save
-      redirect_to @recipe_food, notice: 'RecipeFood was successfully created.'
+      flash[:notice] = 'Recipe food created successfully'
+      redirect_to recipe_path(@recipe.id)
+
     else
-      render :new
+      render 'new'
     end
   end
 
-  def edit; end
+  def edit
+    @recipe_food = RecipeFood.find(params[:recipe_id])
+    @recipe = @recipe_food.recipe
 
-  def update
-    if @recipe_food.update(recipe_food_params)
-      redirect_to @recipe_food, notice: 'RecipeFood was successfully updated.'
+    if @recipe_food
+      # The record was found, proceed with rendering the edit view
     else
-      render :edit
+      flash[:alert] = 'Recipe food not found'
+      redirect_to recipe_path(@recipe.id)
     end
   end
 
   def destroy
-    @recipe_food.destroy
-    redirect_to recipe_foods_url, notice: 'RecipeFood was successfully destroyed.'
+    puts 'you are in destroy'
+    @recipe_food = RecipeFood.find(params[:recipe_id])
+    @recipe = @recipe_food.recipe
+
+    if @recipe_food.destroy
+      flash[:success] = 'Recipe_food deleted successfully'
+    else
+      flash[:error] = 'Error: Recipe_food could not be delete'
+    end
+
+    redirect_to recipe_path(params[:recipe_id])
+  end
+
+  def update
+    @recipe_food = RecipeFood.find(params[:id])
+    if @recipe_food.update(update_food_params)
+      redirect_to recipe_path(@recipe_food.recipe_id), notice: 'recipe food successfully updated.'
+    else
+      flash[:alert] = 'Failed to update recipe food'
+      redirect_back_or_to root_path
+    end
   end
 
   private
 
-  def set_recipe_food
-    @recipe_food = RecipeFood.find(params[:id])
+  def set_food_recipe
+    @available_foods = Food.all
+    @recipe = Recipe.find(params[:recipe_id])
+  end
+  
+  def update_food_params
+    params.require(:recipe_food).permit(:quantity)
   end
 
   def recipe_food_params
-    params.require(:recipe_food).permit(:recipe_id, :food_id, :quantity)
+    params.require(:recipe_food).permit(:quantity, :food_id, :recipe_id)
   end
 end
