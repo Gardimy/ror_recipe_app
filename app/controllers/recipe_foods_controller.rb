@@ -58,7 +58,7 @@ class RecipeFoodsController < ApplicationController
     @available_foods = Food.all
     @recipe = Recipe.find(params[:recipe_id])
   end
-  
+
   def update_food_params
     params.require(:recipe_food).permit(:quantity)
   end
