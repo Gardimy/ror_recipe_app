@@ -10,16 +10,15 @@ class FoodsController < ApplicationController
   end
 
   def create
-    @food = current_user.foods.new(food_params)
-
-    if @food.save
-      flash[:success] = 'Food saved successfully'
-      redirect_to foods_path
-    else
-      flash.now[:error] = 'Error: Food could not be saved'
-      render 'new'
-    end
-  end
+	@food = current_user.foods.build(food_params)
+  
+	if @food.save
+	  redirect_to foods_path, notice: 'Food was successfully created.'
+	else
+	  flash[:alert] = @food.errors.full_messages.join(', ')
+	  render 'new'
+	end
+  end  
 
   def general_shopping_list
     @recipes = current_user.recipes
