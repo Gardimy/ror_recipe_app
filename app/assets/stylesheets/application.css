@@ -1,12 +1,13 @@
 nav.sign_in_user_bar {
-  color: #3c763d;
+  background-color: #3c763d;
   color: #fff;
-  padding: 10px;
+  padding: 20px;
+  text-align: center;
 }
 
 .user-sign-in-link {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .user-sign-in-link ul {
@@ -31,4 +32,75 @@ nav.sign_in_user_bar {
 
 .user-sign-in-link ul li a:hover {
   text-decoration: underline;
+}
+
+h1 {
+  text-align: center;
+}
+
+.recipeDiv {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 55rem;
+  background-color: blueviolet;
+  padding: 1em;
+  opacity: 0.8;
+  gap: 5em;
+}
+
+.recipe {
+  display: flex;
+  background-color: whitesmoke;
+  opacity: 0.8;
+  color: #fcfcfc;
+  font-size: medium;
+}
+
+.recipe-header {
+  margin-left: 20px;
+}
+
+.recipe_name {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.recipe p {
+  width: 85%;
+}
+
+.recipe div {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.Delete {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.recipe-content {
+  margin-top: 10px;
+}
+
+.recipe-description {
+  padding-top: 30px;
+  margin-left: 10px;
+  color: black;
+}
+
+.new-recipe-link {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.new-recipe-link:hover {
+  background-color: #0056b3;
 }
