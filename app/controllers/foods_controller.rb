@@ -1,11 +1,11 @@
 class FoodsController < ApplicationController
   before_action :authenticate_user!
+
   def index
     @foods = current_user.foods
   end
 
   def new
-    @current_user = current_user
     @food = Food.new
   end
 
@@ -22,11 +22,9 @@ class FoodsController < ApplicationController
   end
 
   def general_shopping_list
-    @recipes = Recipe.where(user: current_user)
-    @general_food_list = Food.where(user: current_user)
+    @recipes = current_user.recipes
+    @general_food_list = current_user.foods
     @missing_food_items = []
-    quantity_needed = 0
-    price = 0
 
     @recipes.each do |recipe|
       recipe.recipe_foods.each do |recipe_food|
@@ -38,8 +36,8 @@ class FoodsController < ApplicationController
 
         @missing_food_items << {
           food_name: recipe_food.food.name,
-          quantity_needed:,
-          price:
+          quantity_needed: quantity_needed,
+          price: price
         }
       end
     end
@@ -49,7 +47,7 @@ class FoodsController < ApplicationController
   end
 
   def destroy
-    @food = Food.find(params[:id])
+    @food = current_user.foods.find(params[:id])
     @food.destroy
 
     redirect_to foods_url

@@ -1,5 +1,6 @@
 class RecipeFoodsController < ApplicationController
   before_action :set_food_recipe, except: %i[edit destroy]
+
   def new
     @recipe_food = RecipeFood.new
   end
@@ -10,14 +11,13 @@ class RecipeFoodsController < ApplicationController
     if @recipe_food.save
       flash[:notice] = 'Recipe food created successfully'
       redirect_to recipe_path(@recipe.id)
-
     else
       render 'new'
     end
   end
 
   def edit
-    @recipe_food = RecipeFood.find(params[:recipe_id])
+    @recipe_food = RecipeFood.find(params[:id])
     @recipe = @recipe_food.recipe
 
     if @recipe_food
@@ -29,14 +29,13 @@ class RecipeFoodsController < ApplicationController
   end
 
   def destroy
-    puts 'you are in destroy'
-    @recipe_food = RecipeFood.find(params[:recipe_id])
+    @recipe_food = RecipeFood.find(params[:id])
     @recipe = @recipe_food.recipe
 
     if @recipe_food.destroy
       flash[:success] = 'Recipe_food deleted successfully'
     else
-      flash[:error] = 'Error: Recipe_food could not be delete'
+      flash[:error] = 'Error: Recipe_food could not be deleted'
     end
 
     redirect_to recipe_path(params[:recipe_id])
@@ -44,8 +43,9 @@ class RecipeFoodsController < ApplicationController
 
   def update
     @recipe_food = RecipeFood.find(params[:id])
+
     if @recipe_food.update(update_food_params)
-      redirect_to recipe_path(@recipe_food.recipe_id), notice: 'recipe food successfully updated.'
+      redirect_to recipe_path(@recipe_food.recipe_id), notice: 'Recipe food successfully updated.'
     else
       flash[:alert] = 'Failed to update recipe food'
       redirect_back_or_to root_path
