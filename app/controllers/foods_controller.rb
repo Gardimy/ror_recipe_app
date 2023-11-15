@@ -10,15 +10,15 @@ class FoodsController < ApplicationController
   end
 
   def create
-	@food = current_user.foods.build(food_params)
-  
-	if @food.save
-	  redirect_to foods_path, notice: 'Food was successfully created.'
-	else
-	  flash[:alert] = @food.errors.full_messages.join(', ')
-	  render 'new'
-	end
-  end  
+    @food = current_user.foods.build(food_params)
+
+    if @food.save
+      redirect_to foods_path, notice: 'Food was successfully created.'
+    else
+      flash[:alert] = @food.errors.full_messages.join(', ')
+      render 'new'
+    end
+  end
 
   def general_shopping_list
     @recipes = current_user.recipes
@@ -35,8 +35,8 @@ class FoodsController < ApplicationController
 
         @missing_food_items << {
           food_name: recipe_food.food.name,
-          quantity_needed: quantity_needed,
-          price: price
+          quantity_needed:,
+          price:
         }
       end
     end
