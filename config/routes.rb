@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   resources :foods, only: [:index, :new, :create, :destroy]
 
+  devise_scope :user do
+    get "/custom_sign_out" => "devise/sessions#destroy", as: :custom_destroy_user_session
+  end
+
   resources :recipes, except: [:update] do
     member do
       patch 'toggle_public'
