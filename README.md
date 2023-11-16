@@ -2,7 +2,7 @@
 
 # <a name="about-project"> Recipe App </a>
 
-Introducing the Recipe App: Your all-in-one solution for effortless cooking! Seamlessly organize your recipes, ingredients, and pantry items. Craft delicious recipes with ease, generate smart shopping lists, and even share your culinary creations with the world. Cooking has never been this convenient – simplify your kitchen adventures with our Recipe app!
+For this milestone, I created a Recipe app that keeps track of all my recipes. It will allow you to save ingredients, keep track of what you have, create recipes, and generate a shopping list based on what you have and what you are missing from a recipe. Also, since sharing recipes is an important part of cooking the app should allow you to make them public so anyone can access them..For now I only focus on the recipe part.
 
 <!-- TABLE OF CONTENTS -->
 
@@ -61,6 +61,8 @@ Introducing the Recipe App: Your all-in-one solution for effortless cooking! Sea
 - [x] Integrated CanCanCan gem for user authorization (CRUD control).
 - [x] Tests to verify the behavior of controller actions and responses.
 - [x] Integration tests to cover user interactions.
+   - Allow User to create food
+   - allow user to save ingredients
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -102,18 +104,18 @@ Clone the project using one of the options.
 Using SSH-key:
 
 ```
-git clone git@github.com:Jrmcuervo/RoR-group-project.git
+git clone https://github.com/Gardimy/ror_recipe_app
 ```
 Using HTTPS:
 
 ```
-git clone https://github.com/beteland123/recipe_app
+git clone https://github.com/Gardimy/ror_recipe_app
 ```
 
 You can also create the new directory just adding the name of it in the end of command. For example:
 
 ```
-git clone https://github.com/beteland123/recipe_app recipe-app
+git clone \https://github.com/Gardimy/ror_recipe_app
 ```
 ### Installation ⚙️<a name="installation"></a>
 
@@ -284,7 +286,7 @@ If you'd like to contribute to this project, please follow these steps:
 
 Please adhere to the coding conventions and guidelines specified in the project.
 
-Feel free to check the [issues page](https://github.com/beteland123/recipe_app/issues).
+Feel free to check the [issues page](https://github.com/Gardimy/ror_recipe_app/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -292,7 +294,7 @@ Feel free to check the [issues page](https://github.com/beteland123/recipe_app/i
 
 ## 🆘 Support <a name="support"></a>
 
-If you encounter any issues or have any questions or suggestions, please open an issue on the [issue tracker](https://github.com/beteland123/recipe_app/issues).
+If you encounter any issues or have any questions or suggestions, please open an issue on the [issue tracker](https://github.com/Gardimy/ror_recipe_app/issues).
 Furthermore, if you would like to get in touch with me, you can find our contact information in the <a href="#authors">Authors</a> section.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
