@@ -26,6 +26,7 @@ development:
   database: ror_recipe
   username: postgres
   password: gardy
+  port: 5433
   localhost: localhost
 
   # The specified database role being used to connect to postgres.
@@ -63,6 +64,7 @@ test:
   database: ror_recipe
   username: postgres
   password: gardy
+  port: 5433
   localhost: localhost
 
 # As with config/credentials.yml, you never want to store sensitive information,
@@ -90,4 +92,5 @@ production:
   database: ror_recipe
   username: postgres
   password: gardy
+  port: 5433
   localhost: localhost
