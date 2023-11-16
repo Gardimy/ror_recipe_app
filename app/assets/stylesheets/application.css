@@ -150,7 +150,6 @@ h1 {
   margin-top: 5px;
 }
 
-
 .field input[type="checkbox"] {
   margin-right: 5px;
 }
@@ -316,7 +315,8 @@ h1 {
   margin-bottom: 15px;
 }
 
-.recipe-description, .public-recipe-description {
+.recipe-description,
+.public-recipe-description {
   padding-top: 10px;
   margin-left: 20px;
   color: black;
