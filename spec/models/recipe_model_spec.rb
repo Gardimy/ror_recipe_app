@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
-	it 'belongs to a user' do
+  it 'belongs to a user' do
     association = described_class.reflect_on_association(:user)
     expect(association.macro).to eq :belongs_to
   end
