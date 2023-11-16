@@ -1,89 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
+      background-color: #3c763d;
       margin: 0;
       padding: 0;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
     }
 
-    h2 {
+    .login-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+
+    h1 {
       text-align: center;
       color: #333;
     }
 
-    form {
-      max-width: 400px;
-      width: 100%;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
     .field {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     label {
       display: block;
-      font-weight: bold;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
       color: #555;
     }
 
     input {
       width: 100%;
-      padding: 10px;
+      padding: 8px;
       box-sizing: border-box;
       border: 1px solid #ccc;
       border-radius: 4px;
     }
 
-    .actions {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    input[type="submit"] {
-      background-color: #007bff;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    input[type="submit"]:hover {
-      background-color: #0056b3;
-    }
-
     .remember-me {
       display: flex;
-      align-items: center;
-      color: #555;
+      align-items: flex-start;
+	  margin-right: 10px;
+	  font-size: 14px;
+
+    }
+
+    .login {
+      text-align: center;
     }
 
     .links {
+      margin-top: 15px;
       text-align: center;
-      margin-top: 20px;
     }
 
-    .links a {
-      color: #007bff;
+    a {
+      color: #007BFF;
       text-decoration: none;
     }
 
-    .links a:hover {
+    a:hover {
       text-decoration: underline;
     }
   </style>
@@ -91,9 +75,10 @@
 
 <body>
 
-  <h2>Log in</h2>
+  <div class="login-container">
+    <h1>Log in</h1>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -105,19 +90,20 @@
     </div>
 
     <% if devise_mapping.rememberable? %>
-      <div class="field remember-me">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div>
+    <div class="field remember-me">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
     <% end %>
 
-    <div class="actions">
+    <div class="login">
       <%= f.submit "Log in" %>
     </div>
-  <% end %>
+    <% end %>
 
-  <div class="links">
-    <%= render "devise/shared/links" %>
+    <div class="links">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
 
 </body>
