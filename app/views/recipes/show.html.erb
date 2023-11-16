@@ -14,13 +14,6 @@
         <p class="time"><%= @recipe.editing_times? ? @recipe.cooking_time : "cooking_time: #{@recipe.cooking_time} hours" %></p>
         <p class="steps">Steps go here...</p>
       </div>
-
-      <div class="buttons">
-	  <%= link_to "Generate shopping list", general_shopping_list_path, class: 'btn btn-action' %>
-        <% if current_user == @recipe.user %>
-		<%= link_to "Add ingredient", new_recipe_recipe_food_path(recipe_id: @recipe.id), class: 'btn1 btn-action' %>
-		<% end %>
-      </div>
     </div>
 
     <div class="right-section">
@@ -29,7 +22,12 @@
       </div>
     </div>
   </div>
-
+  <div class="buttons">
+  <%= link_to "Generate shopping list", general_shopping_list_path, class: 'btn btn-action' %>
+	<% if current_user == @recipe.user %>
+	<%= link_to "Add ingredient", new_recipe_recipe_food_path(recipe_id: @recipe.id), class: 'btn1 btn-action' %>
+	<% end %>
+  </div>
   <% if @recipe.recipe_foods.includes(:food).any? %>
     <div class="tableDiv">
       <table>

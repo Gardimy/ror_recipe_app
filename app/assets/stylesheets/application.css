@@ -197,25 +197,28 @@ h1 {
   justify-content: space-between;
 }
 
-.left-section {
-  width: 60%;
-}
-
 .right-section {
-  width: 35%;
+  margin-right: 70px;
 }
 
 .names {
+  display: flex;
+  flex-direction: column;
   text-align: left;
+  font-size: 20px;
+}
+
+.names .steps {
+  padding-top: 20px;
 }
 
 .buttons {
-  margin-top: 40px;
+  margin-top: 15px;
   text-align: left;
 }
 
 .buttons .btn1 {
-  margin-left: 60px;
+  margin-left: 400px;
 }
 
 .tableDiv {
@@ -253,4 +256,82 @@ h1 {
 
 .toggle-button.private:hover {
   background-color: green;
+}
+
+.recipeDiv, .public-recipeDiv {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 50rem;
+  background-color: blueviolet;
+  padding: 1em;
+  opacity: 0.8;
+  gap: 2em;
+}
+
+.public-recipe-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-left: 350px;
+}
+
+.public-recipe-description {
+  color: black;
+}
+
+.recipe, .public-recipe {
+  display: flex;
+  background-color: whitesmoke;
+  opacity: 0.8;
+  color: #fcfcfc;
+  font-size: medium;
+}
+
+.recipe-header, .public-recipe-header {
+  margin-left: 30px;
+}
+
+.recipe_name, .public-recipe_name {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.author {
+  color: black;
+}
+
+.recipe p, .public-recipe p {
+  width: 85%;
+}
+
+.recipe div, .public-recipe div {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.Delete, .public-Delete {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.recipe-description, .public-recipe-description {
+  padding-top: 10px;
+  margin-left: 20px;
+  color: black;
+}
+
+.new-recipe-link, .new-public-recipe-link {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.new-recipe-link:hover, .new-public-recipe-link:hover {
+  background-color: #0056b3;
 }
