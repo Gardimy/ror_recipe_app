@@ -82,7 +82,7 @@ h1 {
 }
 
 .recipe-content {
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .recipe-description {
@@ -258,7 +258,7 @@ h1 {
   background-color: green;
 }
 
-.recipeDiv, .public-recipeDiv {
+.public-recipeDiv {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -280,7 +280,7 @@ h1 {
   color: black;
 }
 
-.recipe, .public-recipe {
+.public-recipe {
   display: flex;
   background-color: whitesmoke;
   opacity: 0.8;
@@ -288,11 +288,11 @@ h1 {
   font-size: medium;
 }
 
-.recipe-header, .public-recipe-header {
+.public-recipe-header {
   margin-left: 30px;
 }
 
-.recipe_name, .public-recipe_name {
+.public-recipe_name {
   font-size: 1.5em;
   font-weight: bold;
 }
@@ -301,17 +301,17 @@ h1 {
   color: black;
 }
 
-.recipe p, .public-recipe p {
+.public-recipe p {
   width: 85%;
 }
 
-.recipe div, .public-recipe div {
+.public-recipe div {
   display: flex;
   flex-direction: column;
   gap: 1em;
 }
 
-.Delete, .public-Delete {
+.public-Delete {
   margin-top: 5px;
   margin-bottom: 15px;
 }
@@ -322,7 +322,7 @@ h1 {
   color: black;
 }
 
-.new-recipe-link, .new-public-recipe-link {
+.new-public-recipe-link {
   display: block;
   margin: 20px auto;
   padding: 10px;
@@ -332,6 +332,6 @@ h1 {
   border-radius: 5px;
 }
 
-.new-recipe-link:hover, .new-public-recipe-link:hover {
+.new-public-recipe-link:hover {
   background-color: #0056b3;
 }
