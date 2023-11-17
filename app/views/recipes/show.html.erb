@@ -28,8 +28,9 @@
     <%= link_to "Add ingredient", new_recipe_recipe_food_path(recipe_id: @recipe.id), class: 'btn1 btn-action' %>
   <% end %>
 </div>
+<div class="line-divider"></div>
   <% if @recipe.recipe_foods.includes(:food).any? %>
-    <div class="tableDiv">
+    <div class="tableDivx">
       <table>
         <thead>
           <tr>
