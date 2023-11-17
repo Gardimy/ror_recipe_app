@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RorRecipeApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+  <nav class='sign_in_user_bar'>
+      <% if user_signed_in? %>
+        <div class="user-sign-in-link">
+        <div class="header">
+        <ul>
+         <li><%= link_to 'Foods', foods_path %></li>
+        <li><%= link_to 'Recipes', recipes_path %></li>
+        <li><%= link_to 'Public Recipes', public_recipes_path %></li>
+		<li><%= link_to "Generate shopping list", general_shopping_list_path %></li>
+        <li class="sign_out"><%= link_to 'Sign out', custom_destroy_user_session_path, method: :delete %></li>
+      </ul>
+       </div>
+      </div>
+<% end %>
+</nav>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </body>
+</html>

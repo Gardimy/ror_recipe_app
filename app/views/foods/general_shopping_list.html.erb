@@ -1,0 +1,83 @@
+<style>
+  .shopping_list {
+    text-align: center;
+    margin: 20px;
+  }
+
+  h1 {
+    color: #333;
+  }
+
+  .total {
+    margin-bottom: 20px;
+  }
+
+  .total p {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  table {
+    width: 50%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  p {
+    color: black;
+	font-size: 20px;
+	font-weight: bold;
+  }
+</style>
+
+<div class="shopping_list" id="shopping">
+  <h1>Shopping List</h1>
+
+  <% if @missing_food_items.any? %>
+    <div class="total">
+      <p>Amount of food to buy: <%= @total_food_items %></p>
+      <p>Total value of food need: <%= @total_price %></p>
+    </div>
+    <div class="table">
+      <table>
+        <thead>
+          <tr>
+            <th>Food</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @missing_food_items.each do |item| %>
+            <tr>
+              <td><%= item[:food_name] %></td>
+              <td><%= item[:quantity_needed] %></td>
+              <td>$<%= item[:price] %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <p>No missing food items.</p>
+  <% end %>
+</div>
