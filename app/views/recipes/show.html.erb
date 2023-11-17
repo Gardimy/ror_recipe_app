@@ -24,10 +24,10 @@
   </div>
   <div class="buttons">
   <%= link_to "Generate shopping list", general_shopping_list_path, class: 'btn btn-action' %>
-	<% if current_user == @recipe.user %>
-	<%= link_to "Add ingredient", new_recipe_recipe_food_path(recipe_id: @recipe.id), class: 'btn1 btn-action' %>
-	<% end %>
-  </div>
+  <% if current_user == @recipe.user %>
+    <%= link_to "Add ingredient", new_recipe_recipe_food_path(recipe_id: @recipe.id), class: 'btn1 btn-action' %>
+  <% end %>
+</div>
   <% if @recipe.recipe_foods.includes(:food).any? %>
     <div class="tableDiv">
       <table>
@@ -46,6 +46,10 @@
               <td><%= recipe_food.quantity %> <%= recipe_food.food.measurement_unit %></td>
               <td>$ <%= recipe_food.quantity * recipe_food.food.price %></td>
               <td class="recipe-food-actions">
+			  <% if current_user == @recipe.user %>
+			  <%= link_to 'Modify', edit_recipe_recipe_food_path(recipe_food) %> 
+			 <span class="Delete"><%= button_to  'Remove',  recipe_recipe_food_path(recipe_food), class: "btn-delete", method: :delete, data: { confirm: 'Are you sure?' } %></span>
+			<% end %>
               </td>
             </td>
             </tr>

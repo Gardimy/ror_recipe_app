@@ -6,12 +6,12 @@ class RecipeFoodsController < ApplicationController
   end
 
   def create
-    @recipe_food = RecipeFood.new(recipe_food_params)
+    @recipe_food = @recipe.recipe_foods.build(recipe_food_params)
 
     if @recipe_food.save
-      flash[:notice] = 'Recipe food created successfully'
-      redirect_to recipe_path(@recipe.id)
+      redirect_to recipe_path(@recipe), notice: 'Ingredient was successfully added.'
     else
+      flash[:alert] = @recipe_food.errors.full_messages.join(', ')
       render 'new'
     end
   end
@@ -64,6 +64,6 @@ class RecipeFoodsController < ApplicationController
   end
 
   def recipe_food_params
-    params.require(:recipe_food).permit(:quantity, :food_id, :recipe_id)
+    params.require(:recipe_food).permit(:food_id, :quantity, :recipe_id)
   end
 end
