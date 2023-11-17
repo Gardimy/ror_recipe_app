@@ -70,8 +70,8 @@
               <td><%= food.name %></td>
               <td><%= food.measurement_unit %></td>
               <td>$<%= food.price %></td>
-              <td class="Remove"><%= button_to "Delete Food", food_path(food), method: :delete, data: { confirm: "Are you sure?" } %></td>
-            </tr>
+			  <td class="Remove"><%= button_to "Delete Food", food_path(food.id), method: :delete, data: { confirm: "Are you sure?" } %></td>
+			</tr>
           <% end %>
         </tbody>
       </table>

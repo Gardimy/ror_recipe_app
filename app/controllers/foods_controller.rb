@@ -6,6 +6,7 @@ class FoodsController < ApplicationController
   end
 
   def new
+	@current_user = current_user
     @food = Food.new
   end
 
@@ -20,6 +21,17 @@ class FoodsController < ApplicationController
       flash[:alert] = @food.errors.full_messages.join(', ')
       render 'new'
     end
+  end
+
+  def set_food
+	@food = current_user.foods.find_by(id: params[:id])
+  end
+
+  def destroy
+    @food = Food.find(params[:id])
+    @food.destroy
+
+    redirect_to foods_url
   end
 
   def general_shopping_list
@@ -44,17 +56,17 @@ class FoodsController < ApplicationController
   end
 
   def process_recipe_food(recipe_food)
-    general_food = @general_food_list.find_by(id: recipe_food.food_id)
-    return if general_food_exists_and_has_enough_quantity?(recipe_food, general_food)
-
-    quantity_needed = calculate_quantity_needed(recipe_food, general_food)
-    price = recipe_food.food.price * quantity_needed
-
-    @missing_food_items << {
-      food_name: recipe_food.food.name,
-      quantity_needed:,
-      price:
-    }
+	general_food = @general_food_list.find_by(id: recipe_food.food_id)
+	return if general_food_exists_and_has_enough_quantity?(recipe_food, general_food)
+  
+	quantity_needed = calculate_quantity_needed(recipe_food, general_food)
+	price = recipe_food.food.price * quantity_needed
+  
+	@missing_food_items << {
+	  food_name: recipe_food.food.name,
+	  quantity_needed: quantity_needed,
+	  price: price
+	}
   end
 
   def general_food_exists_and_has_enough_quantity?(recipe_food, general_food)
@@ -63,13 +75,6 @@ class FoodsController < ApplicationController
 
   def calculate_quantity_needed(recipe_food, general_food)
     recipe_food.quantity - (general_food.nil? ? 0 : general_food.quantity)
-  end
-
-  def destroy
-    @food = current_user.foods.find(params[:id])
-    @food.destroy
-
-    redirect_to foods_url
   end
 
   def food_params
