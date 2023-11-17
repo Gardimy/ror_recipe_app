@@ -6,7 +6,7 @@ class FoodsController < ApplicationController
   end
 
   def new
-	@current_user = current_user
+    @current_user = current_user
     @food = Food.new
   end
 
@@ -24,7 +24,7 @@ class FoodsController < ApplicationController
   end
 
   def set_food
-	@food = current_user.foods.find_by(id: params[:id])
+    @food = current_user.foods.find_by(id: params[:id])
   end
 
   def destroy
@@ -56,17 +56,17 @@ class FoodsController < ApplicationController
   end
 
   def process_recipe_food(recipe_food)
-	general_food = @general_food_list.find_by(id: recipe_food.food_id)
-	return if general_food_exists_and_has_enough_quantity?(recipe_food, general_food)
-  
-	quantity_needed = calculate_quantity_needed(recipe_food, general_food)
-	price = recipe_food.food.price * quantity_needed
-  
-	@missing_food_items << {
-	  food_name: recipe_food.food.name,
-	  quantity_needed: quantity_needed,
-	  price: price
-	}
+    general_food = @general_food_list.find_by(id: recipe_food.food_id)
+    return if general_food_exists_and_has_enough_quantity?(recipe_food, general_food)
+
+    quantity_needed = calculate_quantity_needed(recipe_food, general_food)
+    price = recipe_food.food.price * quantity_needed
+
+    @missing_food_items << {
+      food_name: recipe_food.food.name,
+      quantity_needed:,
+      price:
+    }
   end
 
   def general_food_exists_and_has_enough_quantity?(recipe_food, general_food)
