@@ -1,28 +1,84 @@
-<h2>Available food</h2>
-<div class="tableDiv">
-  <div id="public"><%= link_to 'Add Food', new_food_path, class: "add-button" %></div>
-  <% if @foods.any? %>
-    <table>
-      <thead>
-        <tr>
-          <th>Food </th>
-          <th>Measurement unit</th>
-          <th>Unit price</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @foods.each do |food| %>
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .tableDiv {
+      margin-top: 20px;
+	  margin-left: 25%;
+    }
+
+    table {
+      width: 60%;
+      border-collapse: collapse;
+      margin-top: 30px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .add-button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 5px;
+	  margin-left: 50%;
+    }
+
+    .Remove {
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <h2>Available food</h2>
+  <div class="tableDiv">
+    <div id="public">
+      <%= link_to 'Add Food', new_food_path, class: "add-button" %>
+    </div>
+    <% if @foods.any? %>
+      <table>
+        <thead>
           <tr>
-            <td><%= food.name %></td>
-            <td><%= food.measurement_unit %></td>
-            <td>$<%= food.price %></td>
-            <td class="Remove"><%= button_to "Delete Food", food_path(food), method: :delete, data: { confirm: "Are you sure?" } %></td>
+            <th>Food </th>
+            <th>Measurement unit</th>
+            <th>Unit price</th>
+            <th>Action</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @foods.each do |food| %>
+            <tr>
+              <td><%= food.name %></td>
+              <td><%= food.measurement_unit %></td>
+              <td>$<%= food.price %></td>
+              <td class="Remove"><%= button_to "Delete Food", food_path(food), method: :delete, data: { confirm: "Are you sure?" } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <% else %>
+      <p>No food for you.</p>
+    <% end %>
   </div>
-  <% else %>
-    <p>No food for you.</p>
-  <% end %>
+</body>
+</html>

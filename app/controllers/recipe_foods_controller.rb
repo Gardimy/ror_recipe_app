@@ -17,28 +17,28 @@ class RecipeFoodsController < ApplicationController
   end
 
   def edit
-    @recipe_food = RecipeFood.find(params[:id])
-    @recipe = @recipe_food.recipe
-
-    if @recipe_food
-      # The record was found
-    else
-      flash[:alert] = 'Recipe food not found'
-      redirect_to recipe_path(@recipe.id)
-    end
+	@recipe_food = RecipeFood.find(params[:id])
+	@recipe = @recipe_food.recipe
+  
+	if @recipe
+	  # The record was found
+	else
+	  flash[:alert] = 'Recipe not found'
+	  redirect_to root_path
+	end
   end
 
   def destroy
-    @recipe_food = RecipeFood.find(params[:id])
-    @recipe = @recipe_food.recipe
-
-    if @recipe_food.destroy
-      flash[:success] = 'Recipe_food deleted successfully'
-    else
-      flash[:error] = 'Error: Recipe_food could not be deleted'
-    end
-
-    redirect_to recipe_path(params[:recipe_id])
+	@recipe_food = RecipeFood.find(params[:id])
+	@recipe = @recipe_food.recipe
+  
+	if @recipe_food.destroy
+	  flash[:success] = 'Recipe_food deleted successfully'
+	else
+	  flash[:error] = 'Error: Recipe_food could not be deleted'
+	end
+  
+	redirect_to recipe_path(@recipe)
   end
 
   def update
